@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <!--to make it responsive-->
-    <meta
-    name="Viewport"
-    content="width=device-width", initial-scale="1.0"
-    >
-    <title>Porfolio Website: Paulo Dela Vega</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!--Contents of the webpage-->
-    <header>
-        <h1>Paulo Dela Vega's portfolio</h1>
-        <p class="tagline">Aspiring Web Developer</p>
-    </header>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+        >
+        <title>Portfolio Website: Paulo Dela Vega</title>
+        <link rel="stylesheet" href="styles.css">
+        <script src="script.js" defer></script>
+        
+    </head>
     
-     <nav>
+    <body>
+        <!-- Contents of the webpage -->
+         <header>
+            <h1>Paulo Dela Vega's Portfolio</h1>
+            <p class="tagline"> Aspiring Web Developer </p>
+         </header>
+
+         <nav>
             <a href="#about"> About Me</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact Us</a>
-    </nav>
+         </nav>
 
          <main>
             <section id="about">
@@ -70,6 +72,8 @@
                     <textarea id="message" name="message"></textarea>
 
                     <button type="submit"> Send </button>
+                    <p id="formMessage"></p>
+
                 </form>
 
             </section>
@@ -78,6 +82,3 @@
         <footer>
             <p> My Portfolio</p>
         </footer>
-
-</body>
-</html>
