@@ -1,73 +1,47 @@
-// 1. VARIABLES + DOM SELECTION
-// These variables store references to elements that already exist in index.html.
+// -------------------------------------
+// 1. SAY HELLO BUTTON
+// Demonstrates: variable, function,
+// getElementById, and click event.
+// -------------------------------------
+const helloButton = document.getElementById("helloButton");
+const helloMessage = document.getElementById("helloMessage");
 
-const heading = document.querySelector("header h1");
-const projectCards = document.querySelectorAll(".project-card");
-const contactForm = document.querySelector("#contact form");
-const nameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const messageInput = document.getElementById("message");
-const submitButton = contactForm.querySelector("button");
-
-// Create a paragraph for form feedback so you do not need to edit the HTML.
-const formMessage = document.createElement("p");
-formMessage.id = "formMessage";
-contactForm.appendChild(formMessage);
-
-// 2. CONSOLE.LOG()
-// Open the browser Developer Tools > Console to see these messages.
-console.log("Portfolio website loaded!");
-console.log("Portfolio heading:", heading.textContent);
-console.log("Number of projects:", projectCards.length);
-
-// 3. REUSABLE FUNCTION + OPERATORS + CONTROL FLOW
-// The function returns true only when all three fields contain text.
-function checkForm(name, email, message) {
-if (name === "" || email === "" || message === "") {
-return false;
-}
-return true;
+function showGreeting() {
+  helloMessage.innerText = "Hello! Thanks for visiting my portfolio 👋";
 }
 
-// 4. LOOP + CLICK EVENTS + DOM STYLE CHANGES
-// Add a click event to every project card.
-for (let i = 0; i < projectCards.length; i++) {
-projectCards[i].addEventListener("click", function () {
+helloButton.addEventListener("click", showGreeting);
 
-// Remove the highlight from all cards first.
-for (let j = 0; j < projectCards.length; j++) {
-projectCards[j].style.backgroundColor = "";
-}
+// -------------------------------------
+// 2. CONTACT FORM
+// This is only a front-end demo.
+// It does NOT send an actual email.
+// Demonstrates: submit event, function,
+// condition, and DOM text update.
+// -------------------------------------
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
 
-// Highlight only the card that was clicked.
-projectCards[i].style.backgroundColor = "lightyellow";
-console.log("Project " + (i + 1) + " was clicked.");
-});
-}
-// 5. FORM SUBMIT EVENT
 contactForm.addEventListener("submit", function (event) {
+  // Stop the page from refreshing.
+  event.preventDefault();
 
-// Prevent the browser from refreshing or leaving the page.
-event.preventDefault();
+  const nameInput = document.getElementById("name");
+  const visitorName = nameInput.value.trim();
 
-// Read the user's input. trim() removes extra spaces at the beginning/end.
-const visitorName = nameInput.value.trim();
-const visitorEmail = emailInput.value.trim();
-const visitorMessage = messageInput.value.trim();
+  if (visitorName === "") {
+    formMessage.innerText = "Please enter your name first.";
+  } else {
+    formMessage.innerText =
+      "Thanks, " + visitorName + "! Your demo message was received.";
 
-// 6. IF / ELSE + DOM TEXT CHANGES
-if (checkForm(visitorName, visitorEmail, visitorMessage)) {
-formMessage.textContent =
-"Thank you, " + visitorName + "! Your message has been received.";
-submitButton.textContent = "Message Sent!";
-console.log("Name:", visitorName);
-console.log("Email:", visitorEmail);
-console.log("Message:", visitorMessage);
-
-// Clear the form after a successful submission.
-contactForm.reset();
-} else {
-formMessage.textContent = "Please complete all fields before sending.";
-submitButton.textContent = "Send";
-}
+    // Clear the form after a successful demo submission.
+    contactForm.reset();
+  }
 });
+
+// -------------------------------------
+// 3. CURRENT YEAR IN THE FOOTER
+// -------------------------------------
+const year = document.getElementById("year");
+year.innerText = new Date().getFullYear();

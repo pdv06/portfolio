@@ -1,55 +1,368 @@
- body{
-font-family: Arial, sans-serif;
-margin: 0;
+/* ------------------------------
+   1. BASIC RESET
+   ------------------------------ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
- header{
- text-align:center;
- padding:40px;
- }
-
- nav{
- text-align: center;
- padding: 15px;
- }
-
- nav a{
- margin: 10px;
- }
-
- main{
- padding: 20px;
- }
-
- section{
- margin-bottom: 40px;
- }
-
- .project-container{
- display: flex;
- gap: 20px;
- }
-
- .project-card{
- border: 1px solid black;
- padding: 20px;
- width: 200px;
+html {
+  scroll-behavior: smooth;
 }
 
- form{
- display: flex;
- flex-direction: column;
- gap: 10px;
- }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #0b0b0b;
+  color: #f5f5f5;
+  line-height: 1.6;
+}
 
- input,textarea{
- padding: 10px;
- }
+img {
+  max-width: 100%;
+}
 
- button{
- padding: 10px;
- }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
- footer{
- text-align: center;
- padding: 20px;
+/* Reusable container keeps content centered. */
+.container {
+  width: min(1100px, 90%);
+  margin: 0 auto;
+}
+
+/* ------------------------------
+   2. HEADER / NAVIGATION
+   ------------------------------ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(11, 11, 11, 0.95);
+  border-bottom: 1px solid #303030;
+}
+
+.nav-container {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logo {
+  color: #ffd800;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #ffd800;
+}
+
+/* ------------------------------
+   3. HERO SECTION
+   ------------------------------ */
+.hero {
+  min-height: 88vh;
+  display: grid;
+  place-items: center;
+  padding: 90px 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 39px,
+      rgba(255, 216, 0, 0.08) 40px
+    );
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.eyebrow,
+.section-label {
+  color: #ffd800;
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+}
+
+.hero h1 {
+  margin-top: 10px;
+  color: #ffd800;
+  font-size: clamp(3rem, 9vw, 7rem);
+  line-height: 0.95;
+}
+
+.hero h2 {
+  margin-top: 18px;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.hero-text {
+  max-width: 650px;
+  margin-top: 20px;
+  color: #cfcfcf;
+  font-size: 1.05rem;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-block;
+  border: 2px solid #ffd800;
+  padding: 12px 20px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #ffd800;
+  color: #0b0b0b;
+}
+
+.primary-button:hover {
+  background: #ffe94f;
+}
+
+.secondary-button {
+  background: transparent;
+  color: #ffd800;
+}
+
+.secondary-button:hover {
+  background: #ffd800;
+  color: #0b0b0b;
+}
+
+.hello-message {
+  min-height: 28px;
+  margin-top: 16px;
+  color: #ffd800;
+  font-weight: 700;
+}
+
+/* ------------------------------
+   4. GENERAL SECTIONS
+   ------------------------------ */
+.section {
+  padding: 90px 0;
+}
+
+.alt-section {
+  background: #151515;
+}
+
+.section-title {
+  margin: 8px 0 34px;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.about-grid,
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.about-grid p + p {
+  margin-top: 16px;
+}
+
+.profile-card {
+  border: 3px solid #ffd800;
+  padding: 14px;
+}
+
+.profile-placeholder {
+  min-height: 320px;
+  display: grid;
+  place-items: center;
+  background: #ffd800;
+  color: #0b0b0b;
+  font-size: 5rem;
+  font-weight: 900;
+}
+
+/* ------------------------------
+   5. SKILL CARDS
+   ------------------------------ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card,
+.project-card {
+  border: 1px solid #3a3a3a;
+  background: #111;
+  padding: 24px;
+}
+
+.card h3,
+.project-card h3 {
+  margin-bottom: 10px;
+  color: #ffd800;
+}
+
+.card p,
+.project-card p {
+  color: #cccccc;
+}
+
+/* ------------------------------
+   6. PROJECTS
+   ------------------------------ */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.project-card {
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #ffd800;
+}
+
+.project-number {
+  margin-bottom: 18px;
+  color: #666;
+  font-size: 2.5rem;
+  font-weight: 800;
+}
+
+.project-tech {
+  margin: 18px 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.text-link {
+  color: #ffd800;
+  font-weight: 700;
+}
+
+/* ------------------------------
+   7. CONTACT FORM
+   ------------------------------ */
+.contact-section {
+  background: #ffd800;
+  color: #0b0b0b;
+}
+
+.contact-section .section-label,
+.contact-section .section-title {
+  color: #0b0b0b;
+}
+
+.contact-list {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+
+.contact-form {
+  background: #0b0b0b;
+  color: #f5f5f5;
+  padding: 28px;
+}
+
+.contact-form label {
+  display: block;
+  margin: 14px 0 6px;
+  font-weight: 700;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid #555;
+  background: #181818;
+  color: #fff;
+  padding: 12px;
+  font: inherit;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #ffd800;
+  border-color: #ffd800;
+}
+
+.contact-form button {
+  margin-top: 18px;
+}
+
+.form-message {
+  min-height: 26px;
+  margin-top: 12px;
+  color: #ffd800;
+}
+
+/* ------------------------------
+   8. FOOTER
+   ------------------------------ */
+.site-footer {
+  padding: 28px 0;
+  text-align: center;
+  color: #aaaaaa;
+  border-top: 1px solid #303030;
+}
+
+/* ------------------------------
+   9. RESPONSIVE DESIGN
+   Screens 800px wide and below
+   ------------------------------ */
+@media (max-width: 800px) {
+  .nav-container {
+    padding: 16px 0;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    gap: 12px 18px;
+  }
+
+  .about-grid,
+  .contact-grid,
+  .card-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-placeholder {
+    min-height: 240px;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+}
